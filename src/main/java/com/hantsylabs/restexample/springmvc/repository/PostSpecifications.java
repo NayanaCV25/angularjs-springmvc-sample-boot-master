@@ -1,7 +1,7 @@
 package com.hantsylabs.restexample.springmvc.repository;
 
 import com.hantsylabs.restexample.springmvc.domain.Post;
-import com.hantsylabs.restexample.springmvc.domain.Post_;
+//import com.hantsylabs.restexample.springmvc.domain.Post_;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,13 +27,13 @@ public class PostSpecifications {
             List<Predicate> predicates = new ArrayList<>();
             if (StringUtils.hasText(keyword)) {
                 predicates.add(
-                        cb.or(cb.like(root.get(Post_.title), "%" + keyword + "%"),
-                                cb.like(root.get(Post_.content), "%" + keyword + "%"))
+                        cb.or(cb.like(root.get(Post.title), "%" + keyword + "%"),
+                                cb.like(root.get(Post.content), "%" + keyword + "%"))
                 );
             }
 
             if (status != null) {
-                predicates.add(cb.equal(root.get(Post_.status), status));
+                predicates.add(cb.equal(root.get(Post.status), status));
             }
 
             return cb.and(predicates.toArray(new Predicate[predicates.size()]));
