@@ -1,7 +1,7 @@
 package com.hantsylabs.restexample.springmvc.repository;
 
 import com.hantsylabs.restexample.springmvc.domain.User;
-import com.hantsylabs.restexample.springmvc.domain.User_;
+//import com.hantsylabs.restexample.springmvc.domain.User_;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -32,13 +32,13 @@ public class UserSpecifications {
             if (StringUtils.hasText(keyword)) {
                 predicates.add(
                         cb.or(
-                                cb.like(root.get(User_.name), "%" + keyword + "%"),
-                                cb.like(root.get(User_.username), "%" + keyword + "%")
+                                cb.like(root.get(User.name), "%" + keyword + "%"),
+                                cb.like(root.get(User.username), "%" + keyword + "%")
                         ));
             }
 
             if (StringUtils.hasText(role) && !"ALL".equals(role)) {
-                predicates.add(cb.equal(root.get(User_.role), role));
+                predicates.add(cb.equal(root.get(User.role), role));
 //                ListJoin<User_, String> roleJoin = root.join(User_.roles);
 //                predicates.add(cb.equal(roleJoin, role));
             }
